@@ -3,9 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const memberRoutes = require('./routes/memberRoutes'); // Ruta de miembros
-const routineRoutes = require('./routes/routineRoutes'); // Ruta de rutinas
-const classRoutes = require('./routes/classRoutes'); // Ruta de clases
+const memberRoutes = require('./routes/altaRoutes'); // Ruta de altas
+const routineRoutes = require('./routes/bajaRoutes'); // Ruta de bajas
+const classRoutes = require('./routes/modificarRoutes'); // Ruta de modificaciones
 
 // Habilitar CORS para todas las rutas
 app.use(cors());
@@ -22,9 +22,9 @@ mongoose.connect('mongodb+srv://acvidela:tinchotecla@clustera.hys4b.mongodb.net/
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
-app.use('/api/members', memberRoutes);
-app.use('/api/routines', routineRoutes);
-app.use('/api/classes', classRoutes);
+app.use('/api/altas', altaRoutes);
+app.use('/api/bajas', bajaRoutes);
+app.use('/api/modificaciones', modificarRoutes);
 
 
 // Escuchar en un puerto
