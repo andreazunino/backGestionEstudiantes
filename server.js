@@ -6,6 +6,7 @@ const app = express();
 const memberRoutes = require('./routes/altaRoutes'); // Ruta de altas
 const routineRoutes = require('./routes/bajaRoutes'); // Ruta de bajas
 const classRoutes = require('./routes/modificarRoutes'); // Ruta de modificaciones
+const estudianteRoutes = require('./routes/estudianteRoutes');
 
 // Habilitar CORS para todas las rutas
 app.use(cors());
@@ -14,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Conectar a la base de datos
-mongoose.connect('mongodb+srv://acvidela:tinchotecla@clustera.hys4b.mongodb.net/gimnasio?retryWrites=true&w=majority&appName=ClusterA')
+mongoose.connect('mongodb+srv://instiform:instiform@cluster0.2tsjs.mongodb.net/gestionEstudiantes?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
@@ -22,9 +23,11 @@ mongoose.connect('mongodb+srv://acvidela:tinchotecla@clustera.hys4b.mongodb.net/
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
-app.use('/api/altas', altaRoutes);
+/* app.use('/api/altas', altaRoutes);
 app.use('/api/bajas', bajaRoutes);
 app.use('/api/modificaciones', modificarRoutes);
+*/
+app.use ('/api/estudiantes', estudianteRoutes);
 
 
 // Escuchar en un puerto
